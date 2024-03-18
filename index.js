@@ -23,6 +23,8 @@ onValue(optimalConditionsRef, (snapshot) => {
     let i = optimalConditions.length - 1;
     optimalTemperature = optimalConditions[i].temperature;
     optimalHumidity = optimalConditions[i].humidity;
+    optimalHumidityInput.value = `${optimalHumidity}%`
+    optimalTempInput.value = `${optimalTemperature}°C` 
     
 })
 
