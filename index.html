@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>IOT</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <h2 style="text-align: center;color: black;"> DATA MONITORING PROJECT</h2>
+    <style>
+        body {
+            background-image:url('C:/Users/Admin/Downloads/pexels-lucas-campoi-1824570.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            font-size:x-large;            
+        }
+        .red {
+          color: red;
+          border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <img id="weather-icon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+
+    <button style="position: absolute;right: 0;top:4" class="btn btn-danger"> VIEW LOG</button>
+    
+    <form style="text-align: center;"> 
+        <div>
+            <label for="current_temp">Current Temperature</label><br>
+            <input type="text" id="current_temp" name="current_temp" disabled>
+        </div>
+        <div>
+            <label for="current_humidity">Current Humidity</label><br>
+            <input type="text" id="current_humidity" name="current_humidity" placeholder="" disabled><br>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div>
+            <label>Enter your optimum Temperature:</label><br>
+            <input type="text" id="optimum-temp" required>
+        </div>
+        <div>
+            <label>Enter your optimum humidity: </label><br>
+            <input type="text" id="optimum-humidity" required><br> <!-- Added an id here -->
+        </div>
+        <br>
+        <input type="submit" class="btn btn-danger">
+    </form>
+
+    <script src="index.js" type="module"></script>
+</body>
+</html>
