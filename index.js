@@ -51,7 +51,7 @@ onValue(conditionsRef, (snapshot) => {
     if (temperature > optimalMaxTemp || temperature < optimalMinTemp && humidity > optimalMaxHumidity || humidity < optimalMinHumidity) {
         currTempInput.classList.add("red")    
         currHumidityInput.classList.add("red") 
-        fetch('https://051a-154-159-252-196.ngrok-free.app/call', {
+        fetch('https://4c7e-154-159-252-196.ngrok-free.app/call', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
