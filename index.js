@@ -56,7 +56,7 @@ onValue(conditionsRef, (snapshot) => {
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({message: "Humidity"}),
+            body: JSON.stringify({message: "Dear owner, the humidity and temperature conditions are above optimum Dear owner, the humidity and temperature conditions are above optimum"}),
           })
             .then(response => {
               if (!response.ok) {
@@ -67,10 +67,36 @@ onValue(conditionsRef, (snapshot) => {
         
     }else if (humidity > optimalMaxHumidity || humidity < optimalMinHumidity) {
         currHumidityInput.classList.add("red") 
+        fetch('https://4c7e-154-159-252-196.ngrok-free.app/call', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({message: "Dear owner, the humitity conditions are above optimum Dear owner, the humidity conditions are above optimum"}),
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              console.log(response.json());
+            })
 
 
     } else if (temperature > optimalMaxTemp || temperature < optimalMinTemp) {
         currTempInput.classList.add("red")
+        fetch('https://4c7e-154-159-252-196.ngrok-free.app/call', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({message: "Dear owner, the temperature conditions are above optimum Dear owner, the temperature conditions are above optimum"}),
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              console.log(response.json());
+            })
     }
 })
 
