@@ -53,7 +53,7 @@ onValue(conditionsRef, (snapshot) => {
     if (((temperature > optimalMaxTemp) || (temperature < optimalMinTemp)) && ((humidity > optimalMaxHumidity) || (humidity < optimalMinHumidity))) {
         currTempInput.classList.add("red")    
         currHumidityInput.classList.add("red") 
-        fetch('https://4c7e-154-159-252-196.ngrok-free.app/call', {
+        fetch('https://6c4e-154-159-252-196.ngrok-free.app/call', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ onValue(conditionsRef, (snapshot) => {
     }else if ((humidity > optimalMaxHumidity) || (humidity < optimalMinHumidity)) {
         currHumidityInput.classList.add("red") 
         currTempInput.classList.remove('red')
-        fetch('https://4c7e-154-159-252-196.ngrok-free.app/call', {
+        fetch('https://6c4e-154-159-252-196.ngrok-free.app/call', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ onValue(conditionsRef, (snapshot) => {
     } else if ((temperature > optimalMaxTemp) || (temperature < optimalMinTemp)) {
         currTempInput.classList.add("red")
         currHumidityInput.classList.remove('red')
-        fetch('https://4c7e-154-159-252-196.ngrok-free.app/call', {
+        fetch('https://6c4e-154-159-252-196.ngrok-free.app/call', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
