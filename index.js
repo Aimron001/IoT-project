@@ -49,12 +49,26 @@ onValue(conditionsRef, (snapshot) => {
     currHumidityInput.value = `${humidity}%`
     currTempInput.value = `${temperature}°C` 
     if (temperature > optimalMaxTemp || temperature < optimalMinTemp && humidity > optimalMaxHumidity || humidity < optimalMinHumidity) {
-        currTempInput.classList.add("red")
+        currTempInput.classList.add("red")    
         currHumidityInput.classList.add("red") 
-
+        fetch('https://051a-154-159-252-196.ngrok-free.app/call', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({message: "Humidity"}),
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              console.log(response.json());
+            })
+        
     }else if (humidity > optimalMaxHumidity || humidity < optimalMinHumidity) {
         currHumidityInput.classList.add("red") 
-        
+
+
     } else if (temperature > optimalMaxTemp || temperature < optimalMinTemp) {
         currTempInput.classList.add("red")
     }
