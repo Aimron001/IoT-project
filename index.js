@@ -21,7 +21,8 @@ const minTemp = document.getElementById("min-temp")
 const maxTemp = document.getElementById("max-temp")
 const minHumidity = document.getElementById("min-humidity")
 const maxHumidity = document.getElementById("max-humidity")
-
+currHumidityInput.classList.remove('red')
+currTempInput.classList.remove('red')
 let optimalMinTemp
 let optimalMaxTemp
 let optimalMinHumidity
@@ -48,7 +49,8 @@ onValue(conditionsRef, (snapshot) => {
     let temperature = currConditions[1]
     currHumidityInput.value = `${humidity}%`
     currTempInput.value = `${temperature}°C` 
-    if (temperature > optimalMaxTemp || temperature < optimalMinTemp && humidity > optimalMaxHumidity || humidity < optimalMinHumidity) {
+    console.log(optimalMinTemp && humidity > optimalMaxHumidity || humidity < optimalMinHumidity)
+    if (((temperature > optimalMaxTemp) || (temperature < optimalMinTemp)) && ((humidity > optimalMaxHumidity) || (humidity < optimalMinHumidity))) {
         currTempInput.classList.add("red")    
         currHumidityInput.classList.add("red") 
         fetch('https://4c7e-154-159-252-196.ngrok-free.app/call', {
@@ -65,8 +67,9 @@ onValue(conditionsRef, (snapshot) => {
               console.log(response.json());
             })
         
-    }else if (humidity > optimalMaxHumidity || humidity < optimalMinHumidity) {
+    }else if ((humidity > optimalMaxHumidity) || (humidity < optimalMinHumidity)) {
         currHumidityInput.classList.add("red") 
+        currTempInput.classList.remove('red')
         fetch('https://4c7e-154-159-252-196.ngrok-free.app/call', {
             method: 'POST',
             headers: {
@@ -82,22 +85,28 @@ onValue(conditionsRef, (snapshot) => {
             })
 
 
-    } else if (temperature > optimalMaxTemp || temperature < optimalMinTemp) {
+    } else if ((temperature > optimalMaxTemp) || (temperature < optimalMinTemp)) {
         currTempInput.classList.add("red")
+        currHumidityInput.classList.remove('red')
         fetch('https://4c7e-154-159-252-196.ngrok-free.app/call', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({message: "Dear owner, the temperature conditions are above optimum Dear owner, the temperature conditions are above optimum"}),
-          })
-            .then(response => {
-              if (!response.ok) {
+        })
+        .then(response => {
+            if (!response.ok) {
                 throw new Error('Network response was not ok');
-              }
-              console.log(response.json());
-            })
+            }
+            console.log(response.json());
+        })
+    }else {
+        currHumidityInput.classList.remove('red')
+        currTempInput.classList.remove('red')
     }
+        
+
 })
 
 
