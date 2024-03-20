@@ -20,6 +20,19 @@
           color: red;
           border: 2px solid red;
         }
+        input {
+            text-align: center;
+        }
+        .optimal-inputs {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .optimal-inputs > div {
+            display: flex;
+            flex-direction: column;
+        }
     </style>
 </head>
 <body>
@@ -36,16 +49,31 @@
             <label for="current_humidity">Current Humidity</label><br>
             <input type="text" id="current_humidity" name="current_humidity" placeholder="" disabled><br>
         </div>
-        <br>
+        <!-- <br> -->
         <hr>
-        <br>
-        <div>
-            <label>Enter your optimum Temperature:</label><br>
-            <input type="text" id="optimum-temp" required>
+        <!-- <br> -->
+        <p>Enter your optimum Temperature:</p>
+        <div class="optimal-inputs">
+            <div>
+                <label for="min-temp">Min</label>
+                <input type="text" id="min-temp" required>
+            </div>
+            <div>
+                <label for="max-temp">Max</label>
+                <input type="text" id="max-temp" required>
+            </div>
         </div>
-        <div>
-            <label>Enter your optimum humidity: </label><br>
-            <input type="text" id="optimum-humidity" required><br> <!-- Added an id here -->
+        <hr/>
+        <p>Enter your optimum humidity: </p>
+        <div class="optimal-inputs">
+            <div>
+                <label for="min-humidity">Min</label>
+                <input type="text" id="min-humidity" required>
+            </div>
+            <div>
+                <label for="max-humidity">Max</label>
+                <input type="text" id="max-humidity" required>
+            </div>
         </div>
         <br>
         <input type="submit" class="btn btn-danger">
