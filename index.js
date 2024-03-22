@@ -1,7 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
 import { getDatabase, ref, push, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js' 
 const appSettings = {
-    // databaseURL: 'https://iot-attatchment-project-default-rtdb.europe-west1.firebasedatabase.app/'
     databaseURL: 'https://iot-database-964e1-default-rtdb.firebaseio.com/'
 }
 
@@ -10,13 +9,9 @@ const database = getDatabase(app)
 const conditionsRef = ref(database, 'conditions')
 const optimalConditionsRef = ref(database, 'optimalConditions')
 
-// adding data
-// push(optimalConditionsRef, { humidity: {min: 65, max: 72.5}, temperature: {min: 26.3, max: 29.7}})
 
 const currTempInput = document.getElementById("current_temp")
 const currHumidityInput = document.getElementById("current_humidity")
-// const optimalTempInput = document.getElementById("optimum-temp")
-// const optimalHumidityInput = document.getElementById("optimum-humidity")
 const minTemp = document.getElementById("min-temp")
 const maxTemp = document.getElementById("max-temp")
 const minHumidity = document.getElementById("min-humidity")
@@ -49,7 +44,6 @@ onValue(conditionsRef, (snapshot) => {
     let temperature = Object.values(currConditions[1])[--i]
     currHumidityInput.value = `${humidity}%`
     currTempInput.value = `${temperature}°C` 
-    // console.log(optimalMinTemp && humidity > optimalMaxHumidity || humidity < optimalMinHumidity)
     if (((temperature > optimalMaxTemp) || (temperature < optimalMinTemp)) && ((humidity > optimalMaxHumidity) || (humidity < optimalMinHumidity))) {
         currTempInput.classList.add("red")    
         currHumidityInput.classList.add("red") 
@@ -115,7 +109,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function setOptimalConditions(event) {
-    // event.preventDefault(); 
         const optimumTempMin = parseFloat(minTemp.value);
         const optimumTempMax = parseFloat(maxTemp.value);
         const optimumHumidityMin = parseFloat(minHumidity.value);
