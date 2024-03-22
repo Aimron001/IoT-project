@@ -44,12 +44,12 @@ onValue(optimalConditionsRef, (snapshot) => {
 
 onValue(conditionsRef, (snapshot) => {
     let currConditions = Object.values(snapshot.val());
-    let i = currConditions.length - 1;
-    let humidity = currConditions[0]
-    let temperature = currConditions[1]
+    let i = Object.values(currConditions[0]).length - 1
+    let humidity = Object.values(currConditions[0])[i]
+    let temperature = Object.values(currConditions[1])[--i]
     currHumidityInput.value = `${humidity}%`
     currTempInput.value = `${temperature}°C` 
-    console.log(optimalMinTemp && humidity > optimalMaxHumidity || humidity < optimalMinHumidity)
+    // console.log(optimalMinTemp && humidity > optimalMaxHumidity || humidity < optimalMinHumidity)
     if (((temperature > optimalMaxTemp) || (temperature < optimalMinTemp)) && ((humidity > optimalMaxHumidity) || (humidity < optimalMinHumidity))) {
         currTempInput.classList.add("red")    
         currHumidityInput.classList.add("red") 
